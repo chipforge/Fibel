@@ -1,0 +1,68 @@
+%%  ************    Chipforge's Fibel   *******************************
+%%
+%%  Organisation:   Chipforge
+%%                  Germany / European Union
+%%
+%%  Profile:        Chipforge focus on fine System-on-Chip Cores in
+%%                  Verilog HDL Code which are easy understandable and
+%%                  adjustable. For further information see
+%%                          www.chipforge.org
+%%                  there are projects from small cores up to PCBs, too.
+%%
+%%  File:           Fibel/part-3/section-SIWTM/figure-SIWTM.tex
+%%
+%%  Purpose:        Figure File for SIWTM
+%%
+%%  ************    LaTeX with circdia.sty package      ***************
+%%
+%%  ///////////////////////////////////////////////////////////////////
+%%
+%%  Copyright (c)   2019, 2020 by
+%%                  chipforge <fibel@nospam.chipforge.org>
+%%
+%%  Permission is granted to copy, distribute and/or modify this
+%%  document under the terms of the GNU Free Documentation License,
+%%  Version 1.3 or any later version published by the Free Software
+%%  Foundation; with no Invariant Sections, no Front-Cover Texts, and
+%%  no Back-Cover Texts.
+%%
+%%   (__)   A copy of the license is included in the section entitled
+%%   oo )   "GNU Free Documentation License".
+%%   /_/|   http://www.gnu.org/licenses/fdl-1.3.html
+%%
+%%  ///////////////////////////////////////////////////////////////////
+\begin{center}
+    \begin{figure}[h]
+        \begin{center}
+            \begin{circuitdiagram}{44}{15}
+            \pin{1}{1}{L}{clock}    % pin clock
+            \wire{2}{1}{31}{1}
+            \junct{11}{1}
+            \junct{21}{1}
+            \pin{1}{7}{L}{tmode}    % pin tmode
+            \pin{1}{9}{L}{async}    % pin async
+            \usgate
+            \decoder{mux21}{6}{9}{R}{}{MUX2}
+            \wire{11}{1}{11}{7}
+            \wire{11}{7}{12}{7}
+            \flipflop{d}{16}{7}{R}{}{DFF}
+            \wire{21}{1}{21}{7}
+            \wire{21}{7}{22}{7}
+            \flipflop{d}{26}{7}{R}{}{DFF}
+            \wire{31}{1}{31}{7}
+            \wire{31}{7}{32}{7}
+            \flipflop{d}{36}{7}{R}{}{DFF}
+            \wire{10}{9}{12}{9}
+            \wire{20}{9}{22}{9}
+            \wire{30}{9}{32}{9}
+            \wire{40}{9}{42}{9}
+            \junct{41}{9}
+            \wire{41}{9}{41}{14}
+            \wire{1}{14}{41}{14}
+            \wire{1}{11}{1}{14}
+            \wire{1}{11}{2}{11}
+            \pin{43}{9}{R}{sync}    % pin sync
+            \end{circuitdiagram}
+        \end{center}
+    \end{figure}
+\end{center}

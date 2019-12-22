@@ -1,0 +1,49 @@
+%%  ************    Chipforge's Fibel   *******************************
+%%
+%%  Organisation:   Chipforge
+%%                  Germany / European Union
+%%
+%%  Profile:        Chipforge focus on fine System-on-Chip Cores in
+%%                  Verilog HDL Code which are easy understandable and
+%%                  adjustable. For further information see
+%%                          www.chipforge.org
+%%                  there are projects from small cores up to PCBs, too.
+%%
+%%  File:           Fibel/part-3/section-ASRST/DE_section-ASRST.tex
+%%
+%%  Purpose:        Topic ASRST File DE (deutsch)
+%%
+%%  ************    LaTeX   *******************************************
+%%
+%%  ///////////////////////////////////////////////////////////////////
+%%
+%%  Copyright (c)   2019, 2020 by
+%%                  chipforge <fibel@nospam.chipforge.org>
+%%
+%%  Permission is granted to copy, distribute and/or modify this
+%%  document under the terms of the GNU Free Documentation License,
+%%  Version 1.3 or any later version published by the Free Software
+%%  Foundation; with no Invariant Sections, no Front-Cover Texts, and
+%%  no Back-Cover Texts.
+%%
+%%   (__)   A copy of the license is included in the section entitled
+%%   oo )   "GNU Free Documentation License".
+%%   /_/|   http://www.gnu.org/licenses/fdl-1.3.html
+%%
+%%  ///////////////////////////////////////////////////////////////////
+\section{Abtasten eines asynchronen, low-aktiven Resets} \label{part-3:ASRST}
+
+- externer Reset ist definitiv asynchron, gewöhnlicher Weise auch low-aktiv
+- kommt mit einem unbekannten Zeitverhalten rein ~> mindestens doppelt abtasten
+- Anzahl der Stufen im Schieberegister zum Abtasten wird wiederum NSTAGES variable gehalten
+- für Chip-interne Verwendung ist ein high-aktiver Reset angebrachter
+
+\input{part-3/section-ASRST/figure-ASRST.tex}
+
+Funktionsweise:
+~> der low-aktive externe Reset an den (üblicherwiese low-aktiven) Setzeingang des Schieberegisters
+~> bei aktiven externen Reset geht der interne Reset Port umgehend, asynchron zum Takt, auf High
+~> wird der externe Reset inaktiv, bleibt der interne Reset noch die Anzahl von NSTAGES Taktzyklen aktiv, bevor die '0' vollständig durch das Schieberegister hindurch geschoben wurde und der interne Reset, synchron zum Takt, gelöscht wird
+
+\input{part-3/section-ASRST/block-ASRST.tex}
+\clearpage
