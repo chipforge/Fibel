@@ -35,29 +35,33 @@
     \begin{figure}[h]
         \begin{verbatim}
 module asyncrst (
-    output logic sreset;
-    input logic clock;
+    output logic sreset,
+    input logic clock,
     input logic aresetn);
 
-    parameter NSTAGES = 3;
+    parameter NSTAGES = 3;      // number of stages
+
+//  ------------    shift register      -------------------------------
 
 logic [NSTAGES-1:0] shiftreg;
 
 // clocked process
-always @ (posedge clock, negedge aresetn)
+always_ff @(posedge clock or negedge aresetn)
 begin
     if (!aresetn)
         // reset active
         shiftreg <= {NSTAGES{1'b1}};
     else
-        // shift in reset release value from MSB while clocked
+        // shift in 'reset release' value from MSB while clocked
         shiftreg <= {1'b0, shiftreg[NSTAGES-1:1]};
 end
+
+//  ------------    output matching     -------------------------------
 
 // shiftregister LSB used as output
 assign sreset = shiftreg[0];
 
-endmodule
+endmodule:asyncrst
         \end{verbatim}
     \end{figure}
     SystemVerilog 2012
